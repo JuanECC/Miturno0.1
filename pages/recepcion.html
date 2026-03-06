@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<title>Recepción - Miturno</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+<h2 class="mb-4">Registro de Paciente</h2>
+
+<form id="formPaciente">
+
+<!-- DATOS DEL PACIENTE -->
+
+<div class="card mb-3">
+<div class="card-header">Datos del paciente</div>
+
+<div class="card-body row">
+
+<div class="col-md-6">
+<label>Nombre</label>
+<input type="text" class="form-control" id="nombre" required>
+</div>
+
+<div class="col-md-2">
+<label>Edad</label>
+<input type="number" class="form-control" id="edad">
+</div>
+
+<div class="col-md-2">
+<label>Sexo</label>
+<select class="form-control" id="sexo">
+<option>Masculino</option>
+<option>Femenino</option>
+</select>
+</div>
+
+<div class="col-md-2">
+<label>Peso (kg)</label>
+<input type="number" class="form-control" id="peso">
+</div>
+
+<div class="col-md-6 mt-2">
+<label>CURP</label>
+<input type="text" class="form-control" id="curp">
+</div>
+
+<div class="col-md-6 mt-2">
+<label>Teléfono</label>
+<input type="text" class="form-control" id="telefono">
+</div>
+
+</div>
+</div>
+
+<!-- MOTIVO INGRESO -->
+
+<div class="card mb-3">
+
+<div class="card-header">
+Motivo de ingreso
+</div>
+
+<div class="card-body">
+
+<input type="text" class="form-control" id="motivoIngreso" placeholder="Ej. Dolor abdominal">
+
+</div>
+</div>
+
+<!-- SIGNOS VITALES -->
+
+<div class="card mb-3">
+
+<div class="card-header">
+Signos Vitales
+</div>
+
+<div class="card-body row">
+
+<div class="col-md-2">
+<label>Presión Sistólica</label>
+<input type="number" class="form-control" id="ps">
+</div>
+
+<div class="col-md-2">
+<label>Presión Diastólica</label>
+<input type="number" class="form-control" id="pd">
+</div>
+
+<div class="col-md-2">
+<label>Frecuencia Cardíaca</label>
+<input type="number" class="form-control" id="fc">
+</div>
+
+<div class="col-md-2">
+<label>Saturación O₂</label>
+<input type="number" class="form-control" id="spo2">
+</div>
+
+<div class="col-md-2">
+<label>Temperatura</label>
+<input type="number" step="0.1" class="form-control" id="temp">
+</div>
+
+</div>
+
+</div>
+
+<!-- SIGNOS CRÍTICOS -->
+
+<div class="card mb-3">
+
+<div class="card-header">
+Signos de peligro
+</div>
+
+<div class="card-body">
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="choque">
+<label class="form-check-label">Choque</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="dificultadRespirar">
+<label class="form-check-label">Dificultad para respirar</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="accidenteGrave">
+<label class="form-check-label">Accidente grave</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="dolorPecho">
+<label class="form-check-label">Dolor en el pecho</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="convulsiones">
+<label class="form-check-label">Convulsiones</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="sangradoExcesivo">
+<label class="form-check-label">Sangrado excesivo</label>
+</div>
+
+<div class="form-check">
+<input class="form-check-input" type="checkbox" id="paroCardiaco">
+<label class="form-check-label">Paro cardiaco</label>
+</div>
+
+</div>
+
+</div>
+
+<!-- OBSERVACIONES -->
+
+<div class="card mb-3">
+
+<div class="card-header">
+Observaciones
+</div>
+
+<div class="card-body">
+
+<textarea class="form-control" id="observaciones"></textarea>
+
+</div>
+
+</div>
+
+<button class="btn btn-primary">
+Registrar Paciente
+</button>
+
+</form>
+
+</div>
+
+<script type="module" src="../js/modules/pacientes.js"></script>
+
+</body>
+</html>
