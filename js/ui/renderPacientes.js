@@ -5,7 +5,9 @@ collection,
 query,
 where,
 orderBy,
-onSnapshot
+onSnapshot,
+doc,
+updateDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const tabla = document.getElementById("tablaPacientes");
@@ -43,6 +45,49 @@ return "⚪";
 
 
 // =============================
+// ACCIONES
+// =============================
+
+async function llamarPaciente(id){
+
+try{
+
+const ref = doc(db,"pacientes",id);
+
+await updateDoc(ref,{
+estado:"llamado"
+});
+
+}catch(error){
+
+console.error("Error llamando paciente:",error);
+
+}
+
+}
+
+
+async function enviarDoctor(id){
+
+try{
+
+const ref = doc(db,"pacientes",id);
+
+await updateDoc(ref,{
+estado:"doctor"
+});
+
+}catch(error){
+
+console.error("Error enviando a doctor:",error);
+
+}
+
+}
+
+
+
+// =============================
 // RENDER PACIENTES
 // =============================
 
@@ -63,6 +108,19 @@ tr.innerHTML = `
 <td>${paciente.edad}</td>
 <td>${paciente.motivoIngreso}</td>
 <td>${paciente.tiempoEstimado} min</td>
+<td>${paciente.estado}</td>
+
+<td>
+
+<button class="btn-llamar" data-id="${paciente.id}">
+Llamar
+</button>
+
+<button class="btn-doctor" data-id="${paciente.id}">
+Doctor
+</button>
+
+</td>
 
 `;
 
@@ -70,11 +128,42 @@ tabla.appendChild(tr);
 
 });
 
+
+// =============================
+// EVENTOS BOTONES
+// =============================
+
+document.querySelectorAll(".btn-llamar").forEach(btn => {
+
+btn.addEventListener("click",(e)=>{
+
+const id = e.target.dataset.id;
+
+llamarPaciente(id);
+
+});
+
+});
+
+
+document.querySelectorAll(".btn-doctor").forEach(btn => {
+
+btn.addEventListener("click",(e)=>{
+
+const id = e.target.dataset.id;
+
+enviarDoctor(id);
+
+});
+
+});
+
 }
 
 
+
 // =============================
-// ESCUCHAR FIREBASE
+// CONSULTA FIREBASE
 // =============================
 
 const q = query(
@@ -87,13 +176,20 @@ orderBy("horaIngreso")
 
 onSnapshot(q,(snapshot)=>{
 
+console.log("Docs encontrados:", snapshot.size);
+
 const pacientes = [];
 
-snapshot.forEach(doc => {
+snapshot.forEach(docu => {
 
-pacientes.push(doc.data());
+pacientes.push({
+id: docu.id,
+...docu.data()
+});
 
 });
+
+console.log(pacientes);
 
 renderPacientes(pacientes);
 

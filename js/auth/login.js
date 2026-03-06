@@ -65,7 +65,7 @@ function redireccionarPorRol(rol){
     }
 
     if(rol === "admin"){
-        window.location.href = "./pages/admin.html";
+        window.location.href = "../pages/admin.html";
     }
 
 }
