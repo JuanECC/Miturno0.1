@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Miturno Dashboard</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+}
+
+.layout{
+display:flex;
+height:100vh;
+}
+
+.sidebar{
+width:230px;
+background:#1e293b;
+color:white;
+padding:20px;
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.menu{
+list-style:none;
+padding:0;
+}
+
+.menu li{
+padding:12px;
+cursor:pointer;
+border-radius:6px;
+margin-bottom:8px;
+}
+
+.menu li:hover{
+background:#334155;
+}
+
+main{
+flex:1;
+background:#f1f5f9;
+padding:30px;
+overflow:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="layout">
+
+<!-- MENU LATERAL -->
+
+<aside class="sidebar">
+
+<h2>MITURNO</h2>
+
+<ul class="menu">
+
+<li onclick="cargarModulo('recepcion')">Recepción</li>
+
+<li onclick="cargarModulo('sala-espera')">Sala de Espera</li>
+
+<li onclick="cargarModulo('doctor')">Doctor</li>
+
+<li onclick="cargarModulo('enfermeria')">Enfermería</li>
+
+<li onclick="cargarModulo('camas')">Gestión de Camas</li>
+
+<li onclick="cargarModulo('admin')">Administración</li>
+
+</ul>
+
+</aside>
+
+
+<!-- CONTENIDO DINÁMICO -->
+
+<main id="contenido">
+
+<h1>Bienvenido a Miturno</h1>
+<p>Selecciona un módulo del menú.</p>
+
+</main>
+
+</div>
+
+<script type="module" src="../js/dashboard/router.js"></script>
+
+</body>
+
+</html>

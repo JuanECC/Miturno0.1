@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-<meta charset="UTF-8">
-<title>Miturno Login</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTurno - Sistema de Urgencias</title>
+    
+    <!-- Tailwind CSS via CDN (rápido para empezar) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Nuestro CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+<body class="bg-gray-100">
+    <div id="app" class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-96">
+            <div class="text-center mb-8">
+                <img src="assets/logo.png" alt="MiTurno Logo" class="h-16 mx-auto mb-4">
+                <h1 class="text-2xl font-bold text-gray-800">MiTurno Urgencias</h1>
+                <p class="text-gray-600">Sistema de Gestión Hospitalaria</p>
+            </div>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                    <input type="email" id="email" required 
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <input type="password" id="password" required 
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+                <button type="submit" 
+                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+                    Iniciar Sesión
+                </button>
+            </form>
+            
+            <div id="errorMessage" class="mt-4 text-red-600 text-sm hidden"></div>
+            
+            <!-- Modo demo (útil para pruebas) -->
+            <div class="mt-6 pt-4 border-t border-gray-200">
+                <p class="text-xs text-gray-500 text-center mb-2">Accesos de demostración:</p>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <button onclick="demoLogin('recepcion@miturno.com', '123456')" class="bg-gray-100 p-1 rounded">👋 Recepción</button>
+                    <button onclick="demoLogin('enfermeria@miturno.com', '123456')" class="bg-gray-100 p-1 rounded">🩺 Enfermería</button>
+                    <button onclick="demoLogin('doctor@miturno.com', '123456')" class="bg-gray-100 p-1 rounded">👨‍⚕️ Doctor</button>
+                    <button onclick="demoLogin('admin@miturno.com', '123456')" class="bg-gray-100 p-1 rounded">⚙️ Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<body class="bg-light">
-
-<div class="container vh-100 d-flex justify-content-center align-items-center">
-
-<div class="card p-4 shadow" style="width:350px">
-
-<h3 class="text-center mb-3">Miturno</h3>
-
-<input id="correo" class="form-control mb-3" type="email" placeholder="Correo">
-
-<input id="password" class="form-control mb-3" type="password" placeholder="Contraseña">
-
-<button id="btnLogin" class="btn btn-primary w-100">
-Ingresar
-</button>
-
-</div>
-
-</div>
-
-<script type="module" src="js/auth/login.js"></script>
-
+    <!-- Scripts -->
+    <script src="js/firebase/firebase-config.js"></script>
+    <script src="js/auth/login.js"></script>
 </body>
 </html>
